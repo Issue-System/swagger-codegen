@@ -15,7 +15,6 @@ dependencies:
   cache_directories:
     - "~/.m2"
     - "~/.sbt"
-
   pre:
     - sudo add-apt-repository ppa:duggan/bats --yes
     - sudo apt-get update -qq
@@ -43,7 +42,7 @@ test:
       #    - java -version
       #    - mvn -q clean verify -Psamples
       #    # docker: build generator image and push to Docker Hub
-    - printenv
-    - echo "generator = $DOCKER_GENERATOR_IMAGE_NAME"
-    - echo "cli = $DOCKER_CODEGEN_CLI_IMAGE_NAME"
-    - bash --version
+      - printenv
+      - echo "generator = $DOCKER_GENERATOR_IMAGE_NAME"
+      - echo "cli = $DOCKER_CODEGEN_CLI_IMAGE_NAME"
+      - bash --version
