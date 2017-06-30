@@ -9,6 +9,9 @@ import io.swagger.codegen.CodegenProperty;
 import io.swagger.codegen.CodegenType;
 import io.swagger.codegen.DefaultCodegen;
 import io.swagger.codegen.SupportingFile;
+import io.swagger.models.Model;
+import io.swagger.models.Operation;
+import io.swagger.models.Swagger;
 import io.swagger.models.properties.*;
 
 import java.io.File;
@@ -659,5 +662,4 @@ public abstract class AbstractPhpCodegen extends DefaultCodegen implements Codeg
     public String escapeUnsafeCharacters(String input) {
         return input.replace("*/", "");
     }
-
 }

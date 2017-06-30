@@ -1,6 +1,9 @@
 package io.swagger.codegen.languages;
 
 import io.swagger.codegen.*;
+import io.swagger.models.Model;
+import io.swagger.models.Operation;
+import io.swagger.models.Swagger;
 import io.swagger.models.properties.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -741,4 +744,10 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
         return input.replace("*/", "*_/").replace("/*", "/_*").replace("--", "- -");
     }
 
+    @Override
+    public CodegenOperation fromOperation(String path, String httpMethod, Operation operation, Map<String, Model> definitions, Swagger swagger) {
+        CodegenOperation op = super.fromOperation(path, httpMethod, operation, definitions, swagger);
+        op.path = encodeDoubleQuote(op.path);
+        return op;
+    }
 }

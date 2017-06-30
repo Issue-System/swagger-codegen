@@ -1,11 +1,11 @@
 package io.swagger.codegen.languages;
 
-import io.swagger.codegen.CodegenModel;
 import io.swagger.codegen.*;
 import io.swagger.models.properties.*;
+import io.swagger.models.Model;
+import io.swagger.models.Operation;
 import io.swagger.models.Swagger;
 
-import java.util.TreeSet;
 import java.util.*;
 import java.io.File;
 
@@ -300,5 +300,12 @@ public class JavascriptClosureAngularClientCodegen extends DefaultCodegen implem
 
     public void setUseEs6(boolean useEs6) {
         this.useEs6 = useEs6;
+    }
+
+    @Override
+    public CodegenOperation fromOperation(String path, String httpMethod, Operation operation, Map<String, Model> definitions, Swagger swagger) {
+        CodegenOperation op = super.fromOperation(path, httpMethod, operation, definitions, swagger);
+        op.path = encodeSingleQuote(op.path);
+        return op;
     }
 }

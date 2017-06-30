@@ -3630,4 +3630,14 @@ public class DefaultCodegen {
     public void writePropertyBack(String propertyKey, boolean value) {
         additionalProperties.put(propertyKey, value);
     }
+
+    protected String encodeDoubleQuote(String p) {
+        //prefer replace a ", instead of a fuLL URL encode for readability
+        return p.replaceAll("\"", "%22");
+    }
+
+    protected String encodeSingleQuote(String p) {
+        //prefer replace a ", instead of a fuLL URL encode for readability
+        return p.replaceAll("\'", "%27");
+    }
 }
